@@ -1,0 +1,150 @@
+/* Premium Font Imports - Must precede @import "tailwindcss" */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playball&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&f[]=general-sans@300,400,500,600,700&display=swap');
+
+/* Custom Font Declaration */
+@font-face {
+  font-family: 'Arsis';
+  src: url('/fonts/Arsis-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@import "tailwindcss";
+
+/* Tailwind v4 Theme Configuration */
+@theme {
+  --color-primary-bg: #120F12;
+  --color-secondary-bg: #171315;
+  --color-burgundy: #40222B;
+  --color-wine: #5D2F3E;
+  --color-rose: #D49C9C;
+  --color-warm-beige: #E8D6CC;
+  --color-ivory: #F7F2EF;
+  --color-accent: #D98E8E;
+  --color-glass-border: rgba(255, 255, 255, 0.08);
+  --color-divider: rgba(255, 255, 255, 0.12);
+
+  --font-hero: "Arsis", serif;
+  --font-body: "Satoshi", "General Sans", "Neue Montreal", sans-serif;
+  --font-numbers: "Bebas Neue", sans-serif;
+  --font-signature: "Playball", cursive;
+}
+
+/* Global Base Styles */
+html {
+  background-color: var(--color-primary-bg);
+  color: var(--color-ivory);
+  font-family: var(--font-body);
+  scroll-behavior: initial;
+  overflow-x: clip;
+  width: 100%;
+}
+
+body {
+  background-color: var(--color-primary-bg);
+  color: var(--color-ivory);
+  overflow-x: clip;
+  width: 100%;
+}
+
+#root {
+  overflow-x: clip;
+  width: 100%;
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-primary-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-burgundy);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-wine);
+}
+
+/* Subtle Film Grain Noise Overlay (Base64 Encoded SVG to avoid builder issues) */
+.noise-overlay {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  width: 200%;
+  height: 200%;
+  background: transparent url('data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PScwIDAgMjAwIDIwMCcgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJz48ZmlsdGVyIGlkPSdub2lzZUZpbHRlcic+PGZlVHVyYnVsZW5jZSB0eXBlPSdmcmFjdGFsTm9pc2UnIGJhc2VGcmVxdWVuY3k9JzAuNjUnIG51bU9jdGF2ZXM9JzMnIHN0aXRjaFRpbGVzPSdzdGl0Y2gnLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0nMTAwJScgaGVpZ2h0PScxMDAlJyBmaWx0ZXI9J3VybCgjbm9pc2VGaWx0ZXIpJyBvcGFjaXR5PScwLjAxOCcvPjwvc3ZnPg==') repeat;
+  z-index: 9999;
+  pointer-events: none;
+  animation: shift-noise 8s steps(10) infinite;
+}
+
+@keyframes shift-noise {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -10%); }
+  20% { transform: translate(-15%, 5%); }
+  30% { transform: translate(7%, -25%); }
+  40% { transform: translate(-5%, 25%); }
+  50% { transform: translate(-15%, 10%); }
+  60% { transform: translate(15%, 0%); }
+  70% { transform: translate(0%, 15%); }
+  80% { transform: translate(3%, 35%); }
+  90% { transform: translate(-10%, 10%); }
+}
+
+/* Custom Cursor */
+.custom-cursor {
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--color-rose);
+  border-radius: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 10000;
+  mix-blend-mode: difference;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
+              height 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
+              background-color 0.3s ease, 
+              border-color 0.3s ease;
+}
+
+.custom-cursor.hovered {
+  width: 90px;
+  height: 90px;
+  background-color: var(--color-rose);
+  border-color: transparent;
+}
+
+/* Lenis Smooth Scroll Setup */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis-scrolling iframe {
+  pointer-events: none;
+}
