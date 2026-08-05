@@ -57,8 +57,10 @@ const AboutMe = () => {
           {/* Desktop Only: Bottom-Left Portrait Image (No Fade, No Hover Scale) */}
           <div className="hidden md:block absolute left-0 bottom-0 w-[290px] md:w-[330px] lg:w-[380px] xl:w-[410px] pointer-events-none z-0">
             <img
-              src="/about.png"
+              src="/about.webp"
               alt="Poornima - Graphic Designer Portrait"
+              loading="lazy"
+              decoding="async"
               className="w-full h-auto object-contain object-bottom-left block opacity-100"
             />
           </div>
@@ -77,8 +79,10 @@ const AboutMe = () => {
           <div className="block md:hidden mt-6">
             <div className="relative rounded-xl overflow-hidden border border-white/10 shadow-2xl w-[180px] sm:w-[210px] aspect-[3/4] mb-6 mx-auto">
               <img
-                src="/about.png"
+                src="/about.webp"
                 alt="Poornima - Graphic Designer Portrait"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover object-top block"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#120F12]/60 via-transparent to-transparent pointer-events-none" />
@@ -207,8 +211,10 @@ const AboutMe = () => {
           {/* Botanical Background Image Overlay */}
           <div className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden">
             <img
-              src="/process-bg.png"
+              src="/process-bg.webp"
               alt="Botanical floral process background"
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover object-right block opacity-85 group-hover/process:opacity-100 transition-opacity duration-500"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-secondary-bg via-secondary-bg/70 to-transparent pointer-events-none" />

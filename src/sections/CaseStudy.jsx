@@ -126,8 +126,10 @@ const CaseStudy = () => {
             <div className="md:col-span-7">
               <div className="relative rounded-xl md:rounded-2xl overflow-hidden border border-white/10 shadow-2xl aspect-[4/3] group/img">
                 <img
-                  src="/skincare-branding.png"
+                  src="/skincare-branding.webp"
                   alt="Aurelia Skincare Brand Identity Packaging Design"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover block transition-transform duration-700 group-hover/img:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#120F12]/60 via-transparent to-transparent pointer-events-none" />

@@ -209,9 +209,10 @@ const Hero = () => {
                   className="w-full h-auto origin-bottom relative"
                 >
                   <img
-                    src="/main-hero.png"
+                    src="/main-hero.webp"
                     alt="Poornima portrait cutout graphic"
                     fetchPriority="high"
+                    loading="eager"
                     decoding="async"
                     width={520}
                     height={780}

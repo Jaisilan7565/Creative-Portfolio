@@ -189,8 +189,10 @@ const TestimonialContact = () => {
             {/* Dark Botanical Still Life Floral Vase Background Overlay */}
             <div className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden">
               <img
-                src="/talk-bg.png"
+                src="/talk-bg.webp"
                 alt="Dark botanical still life background"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover object-right block opacity-90 group-hover/cta:opacity-100 transition-opacity duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-secondary-bg via-secondary-bg/70 to-transparent pointer-events-none" />

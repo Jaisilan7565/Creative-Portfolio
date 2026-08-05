@@ -203,10 +203,10 @@ const Loader = ({ onComplete }) => {
             <img
               src="/moon-1.svg"
               alt="Moon"
+              fetchPriority="high"
               aria-hidden="true"
               draggable={false}
               className="w-full h-full object-cover rounded-full scale-[2]"
-              // style={{ filter: "sepia(1) hue-rotate(310deg) saturate(2.8) brightness(0.65)" }}
             />
           </motion.div>
         </motion.div>
