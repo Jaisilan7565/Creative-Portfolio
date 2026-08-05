@@ -182,8 +182,8 @@ const Loader = ({ onComplete }) => {
 
         {/* Moon — spins at top, springs into slot 2, then acts as portal origin */}
         <motion.div
-          initial={{ y: -420 }}
-          animate={{ y: moonLanded ? 0 : -420 }}
+          initial={{ y: "-100vh" }}
+          animate={{ y: moonLanded ? 0 : "-100vh" }}
           transition={
             moonLanded
               ? { type: "spring", stiffness: 80, damping: 14 }
