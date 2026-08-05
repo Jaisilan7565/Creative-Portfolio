@@ -48,9 +48,9 @@ const SelectedWork = () => {
       id="work"
       className="relative w-full py-20 md:py-28 px-6 md:px-12 xl:px-24 bg-primary-bg overflow-hidden isolate"
     >
-      {/* Background Glow Accents */}
-      <div className="absolute top-1/3 -left-[15%] w-[550px] h-[550px] bg-wine/10 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-10 -right-[15%] w-[500px] h-[500px] bg-burgundy/15 rounded-full blur-[140px] pointer-events-none" />
+      {/* Background Glow Accents (GPU Radial Gradients for zero blur lag) */}
+      <div className="absolute top-1/3 -left-[15%] w-[550px] h-[550px] bg-[radial-gradient(circle_at_center,_#5D2F3E25_0%,_transparent_70%)] pointer-events-none" />
+      <div className="absolute bottom-10 -right-[15%] w-[500px] h-[500px] bg-[radial-gradient(circle_at_center,_#40222B30_0%,_transparent_70%)] pointer-events-none" />
 
       {/* Section Header Row */}
       <div className="w-full flex items-center justify-between mb-12 md:mb-16 pb-4 border-b border-glass-border">
@@ -115,9 +115,11 @@ const SelectedWork = () => {
 
             {/* Center Product Image Showcase Container (Seamless Blend) */}
             <div className="relative z-10 w-full h-[270px] lg:h-[290px] mt-2 mb-14 rounded-xl overflow-hidden shadow-2xl flex items-center justify-center bg-black/20">
-              <motion.img
+              <img
                 src={project.image}
                 alt={project.alt}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover object-center rounded-xl transition-transform duration-700 ease-out group-hover:scale-108"
               />
               {/* Inner gradient vignette so mockups blend into dark cards */}
@@ -126,7 +128,7 @@ const SelectedWork = () => {
 
             {/* Anchored Bottom Left Circular CTA Button */}
             <div className="absolute bottom-6 left-6 z-20">
-              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-white/20 bg-white/10 backdrop-blur-md flex items-center justify-center text-ivory group-hover:bg-rose group-hover:border-rose group-hover:text-primary-bg transition-all duration-300 shadow-xl">
+              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-white/20 bg-white/15 md:bg-white/10 md:backdrop-blur-md flex items-center justify-center text-ivory group-hover:bg-rose group-hover:border-rose group-hover:text-primary-bg transition-all duration-300 shadow-xl">
                 <ArrowUpRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </div>
             </div>

@@ -96,6 +96,7 @@ const Loader = ({ onComplete }) => {
   // ── Layout helpers ──────────────────────────────────────────────────────────
   const W = isMobile ? 38 : 72;
   const getX = (idx) => (idx - 3.5) * W;
+  const visibleStars = isMobile ? STARS.slice(0, 60) : STARS;
 
   // ── Render ──────────────────────────────────────────────────────────────────
   return (
@@ -105,7 +106,7 @@ const Loader = ({ onComplete }) => {
     >
       {/* ── Galaxy star field ────────────────────────────────────────────── */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        {STARS.map((star) => (
+        {visibleStars.map((star) => (
           <motion.span
             key={star.id}
             className="absolute rounded-full bg-white"
@@ -138,9 +139,19 @@ const Loader = ({ onComplete }) => {
         className="absolute inset-0 pointer-events-none flex items-center justify-center"
         aria-hidden="true"
       >
-        <div className="absolute w-[420px] h-[420px] rounded-full bg-wine/10 blur-[90px]" />
-        <div className="absolute w-[220px] h-[220px] rounded-full bg-[#5D2F3E]/15 blur-[60px]" />
-        <div className="absolute w-[600px] h-[300px] rounded-full bg-[#2a0a14]/30 blur-[110px] rotate-12" />
+        {isMobile ? (
+          <>
+            <div className="absolute w-[420px] h-[420px] rounded-full bg-[radial-gradient(circle_at_center,_#40222B18_0%,_transparent_70%)]" />
+            <div className="absolute w-[220px] h-[220px] rounded-full bg-[radial-gradient(circle_at_center,_#5D2F3E22_0%,_transparent_70%)]" />
+            <div className="absolute w-[600px] h-[300px] rounded-full bg-[radial-gradient(ellipse_at_center,_#2a0a1430_0%,_transparent_70%)] rotate-12" />
+          </>
+        ) : (
+          <>
+            <div className="absolute w-[420px] h-[420px] rounded-full bg-wine/10 blur-[90px]" />
+            <div className="absolute w-[220px] h-[220px] rounded-full bg-[#5D2F3E]/15 blur-[60px]" />
+            <div className="absolute w-[600px] h-[300px] rounded-full bg-[#2a0a14]/30 blur-[110px] rotate-12" />
+          </>
+        )}
       </div>
 
       {/* ── Letters + Moon ───────────────────────────────────────────────── */}

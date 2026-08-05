@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('');
+  const headerRef = useRef(null);
+  const scrolledRef = useRef(false);
+  const activeSectionRef = useRef('');
 
   const navLinks = [
     { name: 'WORK', href: '#work' },
@@ -13,41 +15,63 @@ const Navbar = () => {
     { name: 'CONTACT', href: '#contact' },
   ];
 
-  // Handle scroll event to change navbar background appearance
+  // Toggle scroll class via DOM — no React re-render during hero scroll
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      if (window.scrollY < 100) {
-        setActiveSection('');
-      }
-      if (window.scrollY > 20) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      if (ticking) return;
+      ticking = true;
+
+      requestAnimationFrame(() => {
+        const y = window.scrollY;
+        const header = headerRef.current;
+
+        // Hysteresis: separate thresholds prevent flicker when crossing the top
+        let shouldScroll = scrolledRef.current;
+        if (!scrolledRef.current && y > 40) shouldScroll = true;
+        if (scrolledRef.current && y < 12) shouldScroll = false;
+
+        if (header && shouldScroll !== scrolledRef.current) {
+          scrolledRef.current = shouldScroll;
+          header.classList.toggle('nav-scrolled', shouldScroll);
+        }
+
+        if (y < 100 && activeSectionRef.current !== '') {
+          activeSectionRef.current = '';
+          setActiveSection('');
+        }
+
+        ticking = false;
+      });
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   // Intersection Observer for scroll spy active navigation highlighting
   useEffect(() => {
     const sectionIds = navLinks.map(link => link.href.slice(1));
-    
+
     const handleIntersection = (entries) => {
       entries.forEach(entry => {
-        // If the section is intersecting the sweet-spot of the viewport, mark it active
         if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
+          const id = entry.target.id;
+          if (activeSectionRef.current !== id) {
+            activeSectionRef.current = id;
+            setActiveSection(id);
+          }
         }
       });
     };
 
-    // Calculate dynamic margins based on screen height for high scroll accuracy
     const observerOptions = {
       root: null,
-      rootMargin: '-35% 0px -55% 0px', // sweet spot centered in the viewport
-      threshold: 0
+      rootMargin: '-35% 0px -55% 0px',
+      threshold: 0,
     };
 
     const observer = new IntersectionObserver(handleIntersection, observerOptions);
@@ -67,13 +91,15 @@ const Navbar = () => {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-out border-b ${
-          scrolled
-            ? 'py-4 bg-primary-bg/85 backdrop-blur-lg border-glass'
-            : 'py-6 bg-transparent border-transparent'
-        }`}
+        ref={headerRef}
+        className="site-header fixed top-0 left-0 w-full z-50 py-5 border-b border-transparent"
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-12 xl:px-24 flex items-center justify-between">
+        <div
+          className="nav-backdrop absolute inset-0 bg-primary-bg/92 border-b border-white/10 shadow-lg pointer-events-none"
+          aria-hidden="true"
+        />
+
+        <div className="relative max-w-7xl mx-auto px-6 md:px-12 xl:px-24 flex items-center justify-between">
           {/* Logo */}
           <a
             href="#"
@@ -91,7 +117,7 @@ const Navbar = () => {
                 <a
                   key={link.name}
                   href={link.href}
-                  className={`font-body text-[11px] tracking-[0.20em] transition-all duration-300 relative group py-2 ${
+                  className={`font-body text-[11px] tracking-[0.20em] transition-colors duration-300 relative group py-2 ${
                     isActive ? 'text-rose font-semibold' : 'text-warm-beige hover:text-rose'
                   }`}
                 >
@@ -152,11 +178,11 @@ const Navbar = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 w-full h-screen bg-primary-bg/95 backdrop-blur-2xl z-40 flex items-center justify-center md:hidden"
+            className="fixed inset-0 w-full h-screen bg-primary-bg/98 z-40 flex items-center justify-center md:hidden"
           >
-            {/* Ambient Background Glow for mobile drawer */}
-            <div className="absolute top-[20%] right-[10%] w-64 h-64 bg-wine/20 rounded-full blur-[100px] pointer-events-none" />
-            <div className="absolute bottom-[20%] left-[10%] w-64 h-64 bg-burgundy/20 rounded-full blur-[100px] pointer-events-none" />
+            {/* Ambient glow — radial gradients instead of blur for Android GPU */}
+            <div className="absolute top-[20%] right-[10%] w-64 h-64 bg-[radial-gradient(circle_at_center,_#5D2F3E35_0%,_transparent_70%)] pointer-events-none" />
+            <div className="absolute bottom-[20%] left-[10%] w-64 h-64 bg-[radial-gradient(circle_at_center,_#40222B35_0%,_transparent_70%)] pointer-events-none" />
 
             <div className="flex flex-col items-center gap-8 text-center px-6">
               {navLinks.map((link, index) => {

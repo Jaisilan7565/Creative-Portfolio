@@ -72,32 +72,54 @@ body {
   background: var(--color-wine);
 }
 
-/* Subtle Film Grain Noise Overlay (Base64 Encoded SVG to avoid builder issues) */
+/* Subtle Film Grain Noise Overlay — static grain (animated filter is costly during scroll) */
 .noise-overlay {
   position: fixed;
-  top: -50%;
-  left: -50%;
-  right: -50%;
-  bottom: -50%;
-  width: 200%;
-  height: 200%;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   background: transparent url('data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PScwIDAgMjAwIDIwMCcgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJz48ZmlsdGVyIGlkPSdub2lzZUZpbHRlcic+PGZlVHVyYnVsZW5jZSB0eXBlPSdmcmFjdGFsTm9pc2UnIGJhc2VGcmVxdWVuY3k9JzAuNjUnIG51bU9jdGF2ZXM9JzMnIHN0aXRjaFRpbGVzPSdzdGl0Y2gnLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0nMTAwJScgaGVpZ2h0PScxMDAlJyBmaWx0ZXI9J3VybCgjbm9pc2VGaWx0ZXIpJyBvcGFjaXR5PScwLjAxOCcvPjwvc3ZnPg==') repeat;
   z-index: 9999;
   pointer-events: none;
-  animation: shift-noise 8s steps(10) infinite;
 }
 
-@keyframes shift-noise {
-  0%, 100% { transform: translate(0, 0); }
-  10% { transform: translate(-5%, -10%); }
-  20% { transform: translate(-15%, 5%); }
-  30% { transform: translate(7%, -25%); }
-  40% { transform: translate(-5%, 25%); }
-  50% { transform: translate(-15%, 10%); }
-  60% { transform: translate(15%, 0%); }
-  70% { transform: translate(0%, 15%); }
-  80% { transform: translate(3%, 35%); }
-  90% { transform: translate(-10%, 10%); }
+@media (max-width: 767px) {
+  #work {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 2400px;
+  }
+}
+
+@media (min-width: 768px) {
+  #work {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 2400px;
+  }
+}
+
+/* Hero card — isolated compositor layer for scroll scale */
+.hero-scale-layer {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.hero-card-shadow {
+  will-change: opacity;
+}
+
+/* Navbar — opacity-only backdrop avoids layout reflow during scroll */
+.site-header {
+  contain: layout style;
+}
+
+.site-header .nav-backdrop {
+  opacity: 0;
+  transition: opacity 0.35s ease-out;
+  will-change: opacity;
+}
+
+.site-header.nav-scrolled .nav-backdrop {
+  opacity: 1;
 }
 
 /* Custom Cursor */
