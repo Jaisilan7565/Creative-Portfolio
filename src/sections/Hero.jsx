@@ -164,22 +164,12 @@ const Hero = () => {
 
           {/* Top Labels Row */}
           <div className="w-full flex items-center justify-center md:justify-between relative z-30 font-body text-[10px] md:text-[11px] tracking-[0.25em] text-warm-beige/60 font-medium">
-            <motion.p
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-center md:text-left"
-            >
+            <p className="text-center md:text-left">
               GRAPHIC DESIGNER & CREATIVE THINKER
-            </motion.p>
-            <motion.p
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="hidden md:block"
-            >
+            </p>
+            <p className="hidden md:block">
               CREATIVE PORTFOLIO
-            </motion.p>
+            </p>
           </div>
 
           {/* 3D Depth Layer Title and Portrait Cutout */}
@@ -193,9 +183,6 @@ const Hero = () => {
                   scaleX: isMobile ? 0.95 : 0.7,
                   scaleY: isMobile ? 1.1 : 1.4,
                 }}
-                initial={{ opacity: 0, letterSpacing: "0.02em" }}
-                animate={{ opacity: 1, letterSpacing: "-0.05em" }}
-                transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
                 className="text-warm-beige/90 font-hero text-[95px] min-[390px]:text-[110px] min-[430px]:text-[120px] sm:text-[140px] md:text-[160px] lg:text-[210px] xl:text-[255px] font-bold uppercase select-none tracking-[-0.05em] text-center pointer-events-none leading-[0.8] md:leading-none origin-center flex flex-col md:block"
               >
                 <span className="block md:inline">PORT</span>
@@ -213,13 +200,6 @@ const Hero = () => {
               <motion.div
                 style={{
                   x: mousePos.x * 20,
-                }}
-                initial={{ y: 120, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{
-                  delay: 0.2,
-                  duration: 1.4,
-                  ease: [0.16, 1, 0.3, 1],
                 }}
                 className="w-full h-auto origin-bottom relative"
               >
@@ -246,12 +226,7 @@ const Hero = () => {
             <div className="absolute -top-16 bottom-0 left-0 right-0 bg-gradient-to-t from-[#120F12] via-[#120F12]/95 to-transparent pointer-events-none -z-10 md:hidden" />
 
             {/* Bottom Left: Visual Identity & Signature */}
-            <motion.div
-              initial={{ opacity: 0, x: -25 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.4, duration: 1 }}
-              className="md:col-span-4 flex flex-col items-center md:items-start text-center md:text-left gap-4 md:gap-5"
-            >
+            <div className="md:col-span-4 flex flex-col items-center md:items-start text-center md:text-left gap-4 md:gap-5">
               <h2 className="font-body text-[15px] sm:text-[18px] md:text-[20px] lg:text-[22px] tracking-[0.05em] leading-[1.3] text-ivory font-bold uppercase max-w-[280px] md:max-w-[320px] text-center md:text-left">
                 I DESIGN DIGITAL EXPERIENCES THAT INSPIRE & CONNECT
               </h2>
@@ -270,14 +245,9 @@ const Hero = () => {
               <span className="font-signature text-[28px] md:text-[36px] text-rose/90 tracking-wide mt-1 md:mt-2 block pl-2 select-none text-center md:text-left">
                 Poornima Naikwadi
               </span>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 25 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.5, duration: 1 }}
-              className="md:col-span-4 md:col-start-9 flex flex-col gap-6 md:gap-16 items-center md:items-end text-center md:text-right w-full"
-            >
+            <div className="md:col-span-4 md:col-start-9 flex flex-col gap-6 md:gap-16 items-center md:items-end text-center md:text-right w-full">
               <p className="font-body text-[13px] md:text-[14px] text-warm-beige/70 leading-[1.6] font-medium max-w-[280px] md:max-w-[250px] text-center md:text-right">
                 I'm a UI/UX and Web Designer crafting elegant, functional and
                 user-centered digital experiences.
@@ -296,7 +266,7 @@ const Hero = () => {
                   <Globe className="w-6 h-6 text-warm-beige/70" />
                 </div>
               </div>
-            </motion.div>
+            </div>
           </motion.div>
         </motion.section>
       </div>
