@@ -73,9 +73,9 @@ const AboutMe = () => {
             </div>
           </div>
 
-          {/* Mobile Only: Original Grid with Bordered Portrait Card */}
+          {/* Mobile Only: Small Centered Bordered Portrait Card */}
           <div className="block md:hidden mt-6">
-            <div className="relative rounded-xl overflow-hidden border border-white/10 shadow-2xl aspect-[3/4] mb-6">
+            <div className="relative rounded-xl overflow-hidden border border-white/10 shadow-2xl w-[180px] sm:w-[210px] aspect-[3/4] mb-6 mx-auto">
               <img
                 src="/about.png"
                 alt="Poornima - Graphic Designer Portrait"
