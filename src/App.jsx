@@ -3,6 +3,7 @@ import MainLayout from "./layouts/MainLayout";
 import Hero from "./sections/Hero";
 import SelectedWork from "./sections/SelectedWork";
 import AboutMe from "./sections/AboutMe";
+import CaseStudy from "./sections/CaseStudy";
 import Loader from "./components/Loader";
 
 const App = () => {
@@ -37,6 +38,7 @@ const App = () => {
         <Hero />
         <SelectedWork />
         <AboutMe />
+        <CaseStudy />
       </MainLayout>
     </>
   );
