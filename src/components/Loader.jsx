@@ -101,7 +101,7 @@ const Loader = ({ onComplete }) => {
   return (
     <div
       ref={loaderRef}
-      className="fixed inset-0 w-full h-full bg-[#0c0a0c] z-[9999] flex items-center justify-center overflow-hidden select-none pointer-events-none"
+      className="fixed inset-0 w-full h-full bg-[#0c0a0c] z-[9999] flex items-center justify-center overflow-hidden select-none pointer-events-auto touch-none"
     >
       {/* ── Galaxy star field ────────────────────────────────────────────── */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
