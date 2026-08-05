@@ -73,21 +73,25 @@ const Hero = () => {
   const row5X = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
 
   // Mobile layout scroll animations complete at 0.3 scroll progress, before the scaling zoom-out begins
+  // Mobile: portrait rises as the details slide up from below. Completes at 0.22, before scale-out.
   const combinedImageY = useTransform(
     scrollYProgress,
-    isMobile ? [0, 0.3, 0.5] : [0, 0.5],
-    isMobile ? [0, -160, -160] : [mousePos.y * 20, mousePos.y * 20],
+    isMobile ? [0, 0.22, 0.5] : [0, 0.5],
+    isMobile ? [0, -130, -130] : [mousePos.y * 20, mousePos.y * 20],
   );
 
+  // Mobile: pure slide from below — no opacity animation, just y movement through overflow-hidden
+  // Desktop: always at y:0, always visible
   const detailsY = useTransform(
     scrollYProgress,
-    isMobile ? [0, 0.3, 0.5] : [0, 0.5],
-    isMobile ? [420, 0, 0] : [0, 0],
+    isMobile ? [0, 0.22] : [0, 0.5],
+    isMobile ? [500, 0] : [0, 0],
   );
+  // Always fully opaque — the overflow-hidden clip acts as the reveal, not fade
   const detailsOpacity = useTransform(
     scrollYProgress,
-    isMobile ? [0, 0.08, 0.3, 0.5] : [0, 0.125, 0.5],
-    isMobile ? [0, 0.2, 1, 1] : [1, 1, 1],
+    [0, 1],
+    [1, 1],
   );
 
   // Mouse Parallax & Responsive Detection Effect
