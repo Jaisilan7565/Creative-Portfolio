@@ -47,7 +47,7 @@ const TestimonialContact = () => {
   return (
     <section
       id="testimonials"
-      className="relative w-full pt-8 md:pt-12 pb-20 md:pb-28 px-6 md:px-12 xl:px-24 bg-primary-bg overflow-hidden isolate scroll-mt-24 md:scroll-mt-32"
+      className="relative w-full pt-8 md:pt-12 pb-20 md:pb-28 px-6 md:px-12 xl:px-24 bg-primary-bg overflow-hidden isolate scroll-mt-12 md:scroll-mt-18"
     >
       {/* Background Radial Glow Accents */}
       <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-[radial-gradient(circle_at_center,_#5D2F3E20_0%,_transparent_70%)] pointer-events-none -z-10" />
@@ -145,7 +145,10 @@ const TestimonialContact = () => {
           </div>
 
           {/* Right Division: LET'S CREATE SOMETHING BEAUTIFUL */}
-          <div id="contact" className="p-6 sm:p-8 md:p-10 lg:p-12 flex flex-col justify-between relative overflow-hidden group/cta min-h-[440px] sm:min-h-[460px] scroll-mt-24 md:scroll-mt-32">
+          <div
+            id="contact"
+            className="p-6 sm:p-8 md:p-10 lg:p-12 flex flex-col justify-between relative overflow-hidden group/cta min-h-[440px] sm:min-h-[460px] scroll-mt-24 md:scroll-mt-32"
+          >
             {/* Header Row */}
             <div className="w-full flex items-center justify-between pb-6 relative z-10">
               <h2 className="font-hero text-xl sm:text-2xl lg:text-3xl tracking-wider text-rose font-bold uppercase leading-tight md:max-w-[85%]">
@@ -170,15 +173,17 @@ const TestimonialContact = () => {
 
             {/* CTA Button */}
             <div className="pt-6 relative z-10">
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-3 px-6 py-3.5 rounded-xl border border-rose/50 bg-white/5 hover:bg-rose/15 hover:border-rose text-ivory font-body text-xs font-semibold tracking-widest uppercase transition-all duration-300 group/talk shadow-lg"
+              <button
+                onClick={() =>
+                  window.dispatchEvent(new CustomEvent("open-lets-talk"))
+                }
+                className="inline-flex items-center gap-3 px-6 py-3.5 rounded-xl border border-rose/50 bg-white/5 hover:bg-rose/15 hover:border-rose text-ivory font-body text-xs font-semibold tracking-widest uppercase transition-all duration-300 group/talk shadow-lg cursor-pointer"
               >
                 <span>LET'S TALK</span>
                 <span className="text-base group-hover/talk:translate-x-1 transition-transform duration-300">
                   →
                 </span>
-              </a>
+              </button>
             </div>
 
             {/* Dark Botanical Still Life Floral Vase Background Overlay */}

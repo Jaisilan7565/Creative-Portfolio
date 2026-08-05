@@ -39,7 +39,7 @@ const AboutMe = () => {
   return (
     <section
       id="about"
-      className="relative w-full pt-8 md:pt-12 pb-20 md:pb-28 px-6 md:px-12 xl:px-24 bg-primary-bg overflow-hidden isolate scroll-mt-12 md:scroll-mt-16"
+      className="relative w-full pt-8 md:pt-12 pb-20 md:pb-28 px-6 md:px-12 xl:px-24 bg-primary-bg overflow-hidden isolate scroll-mt-12 md:scroll-mt-18"
     >
       {/* Background Radial Glow Accents */}
       <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-[radial-gradient(circle_at_center,_#5D2F3E20_0%,_transparent_70%)] pointer-events-none -z-10" />
@@ -107,15 +107,17 @@ const AboutMe = () => {
               </p>
 
               <div className="pt-2">
-                <a
-                  href="#contact"
-                  className="inline-flex items-center gap-3 px-6 py-3 rounded-full border border-wine/60 bg-white/5 text-warm-beige hover:text-rose hover:border-rose hover:bg-rose/10 transition-all duration-300 font-body text-xs tracking-widest uppercase font-semibold group/btn"
+                <button
+                  onClick={() =>
+                    window.dispatchEvent(new CustomEvent("open-lets-talk"))
+                  }
+                  className="inline-flex items-center gap-3 px-6 py-3 rounded-full border border-wine/60 bg-white/5 text-warm-beige hover:text-rose hover:border-rose hover:bg-rose/10 transition-all duration-300 font-body text-xs tracking-widest uppercase font-semibold group/btn cursor-pointer"
                 >
                   <span>MORE ABOUT ME</span>
                   <span className="text-base group-hover/btn:translate-x-1 transition-transform duration-300">
                     →
                   </span>
-                </a>
+                </button>
               </div>
             </div>
           </div>
@@ -144,15 +146,17 @@ const AboutMe = () => {
             </p>
 
             <div className="pt-2">
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-3 px-6 py-3 rounded-full border border-wine/60 bg-white/5 text-warm-beige hover:text-rose hover:border-rose hover:bg-rose/10 transition-all duration-300 font-body text-xs tracking-widest uppercase font-semibold group/btn"
+              <button
+                onClick={() =>
+                  window.dispatchEvent(new CustomEvent("open-lets-talk"))
+                }
+                className="inline-flex items-center gap-3 px-6 py-3 rounded-full border border-wine/60 bg-white/5 text-warm-beige hover:text-rose hover:border-rose hover:bg-rose/10 transition-all duration-300 font-body text-xs tracking-widest uppercase font-semibold group/btn cursor-pointer"
               >
                 <span>MORE ABOUT ME</span>
                 <span className="text-base group-hover/btn:translate-x-1 transition-transform duration-300">
                   →
                 </span>
-              </a>
+              </button>
             </div>
           </div>
         </motion.div>

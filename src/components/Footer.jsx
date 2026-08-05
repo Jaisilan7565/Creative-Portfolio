@@ -18,13 +18,13 @@ const InstagramIcon = (props) => (
 );
 
 const Footer = () => {
-  const currentYear = 2024; // Sticking to 2024 to match the mockup image exactly
+  const currentYear = 2026; // Sticking to 2024 to match the mockup image exactly
 
   const navLinks = [
     { name: "Work", href: "#work" },
     { name: "About", href: "#about" },
-    { name: "Process", href: "#process" },
-    { name: "Contact", href: "#contact" },
+    { name: "Skills", href: "#skills" },
+    { name: "Testimonials", href: "#testimonials" },
   ];
 
   return (
@@ -53,7 +53,19 @@ const Footer = () => {
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="font-body text-[13px] md:text-[14px] text-warm-beige hover:text-rose transition-colors duration-300 relative py-1 inline-block group"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      if (link.href === "#contact" || link.href === "#talk") {
+                        window.dispatchEvent(new CustomEvent("open-lets-talk"));
+                        return;
+                      }
+                      window.dispatchEvent(
+                        new CustomEvent("navigate-home-section", {
+                          detail: { hash: link.href },
+                        }),
+                      );
+                    }}
+                    className="font-body text-[13px] md:text-[14px] text-warm-beige hover:text-rose transition-colors duration-300 relative py-1 inline-block group cursor-pointer"
                   >
                     {link.name}
                     <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-rose transition-all duration-300 group-hover:w-full"></span>

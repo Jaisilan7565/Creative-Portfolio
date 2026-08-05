@@ -5,10 +5,71 @@ import SelectedWork from "./sections/SelectedWork";
 import AboutMe from "./sections/AboutMe";
 import CaseStudy from "./sections/CaseStudy";
 import TestimonialContact from "./sections/TestimonialContact";
+import LetsTalk from "./pages/LetsTalk";
 import Loader from "./components/Loader";
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState("home");
+
+  useEffect(() => {
+    const checkHash = () => {
+      if (window.location.hash === "#talk" || window.location.hash === "#contact-page") {
+        setCurrentPage("talk");
+      }
+    };
+    checkHash();
+    window.addEventListener("hashchange", checkHash);
+
+    const handleNavigateTalk = () => {
+      setCurrentPage("talk");
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    };
+    window.addEventListener("open-lets-talk", handleNavigateTalk);
+
+    return () => {
+      window.removeEventListener("hashchange", checkHash);
+      window.removeEventListener("open-lets-talk", handleNavigateTalk);
+    };
+  }, []);
+
+  // Always scroll to top when changing pages
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, [currentPage]);
+
+  useEffect(() => {
+    const handleNavigateHomeSection = (e) => {
+      const targetHash = e.detail?.hash || "";
+      const targetId = targetHash.replace("#", "");
+
+      if (currentPage !== "home") {
+        setCurrentPage("home");
+        setTimeout(() => {
+          if (targetId) {
+            const el = document.getElementById(targetId);
+            if (el) {
+              el.scrollIntoView({ behavior: "smooth" });
+            }
+          } else {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }
+        }, 100);
+      } else {
+        if (targetId) {
+          const el = document.getElementById(targetId);
+          if (el) {
+            el.scrollIntoView({ behavior: "smooth" });
+          }
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }
+    };
+
+    window.addEventListener("navigate-home-section", handleNavigateHomeSection);
+    return () => window.removeEventListener("navigate-home-section", handleNavigateHomeSection);
+  }, [currentPage]);
 
   // Force instant scroll to top on reload/mount and lock scroll while loading
   useEffect(() => {
@@ -35,13 +96,17 @@ const App = () => {
   return (
     <>
       {isLoading && <Loader onComplete={() => setIsLoading(false)} />}
-      <MainLayout>
-        <Hero />
-        <SelectedWork />
-        <AboutMe />
-        <CaseStudy />
-        <TestimonialContact />
-      </MainLayout>
+      {currentPage === "talk" ? (
+        <LetsTalk onBackHome={() => setCurrentPage("home")} />
+      ) : (
+        <MainLayout>
+          <Hero />
+          <SelectedWork />
+          <AboutMe />
+          <CaseStudy />
+          <TestimonialContact />
+        </MainLayout>
+      )}
     </>
   );
 };

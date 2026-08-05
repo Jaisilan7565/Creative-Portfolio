@@ -11,22 +11,18 @@ const Navbar = () => {
   const navLinks = [
     { name: 'WORK', href: '#work' },
     { name: 'ABOUT', href: '#about' },
-    { name: 'PROCESS', href: '#about' },
-    { name: 'CONTACT', href: '#contact' },
+    { name: 'SKILLS', href: '#skills' },
+    { name: 'TESTIMONIALS', href: '#testimonials' },
   ];
 
   const handleNavClick = (e, href) => {
     e.preventDefault();
     setIsOpen(false);
-    const targetId = href.replace('#', '');
-    if (!targetId) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (href === '#talk' || href === '#contact') {
+      window.dispatchEvent(new CustomEvent("open-lets-talk"));
       return;
     }
-    const element = document.getElementById(targetId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    window.dispatchEvent(new CustomEvent("navigate-home-section", { detail: { hash: href } }));
   };
 
   // Toggle scroll class via DOM — no React re-render during hero scroll
@@ -109,7 +105,9 @@ const Navbar = () => {
         className="site-header fixed top-0 left-0 w-full z-50 py-5 border-b border-transparent"
       >
         <div
-          className="nav-backdrop absolute inset-0 bg-primary-bg/92 border-b border-white/10 shadow-lg pointer-events-none"
+          className={`nav-backdrop absolute inset-0 border-b border-white/10 shadow-lg pointer-events-none transition-colors duration-300 ${
+            isOpen ? "bg-[#120F12]" : "bg-primary-bg/92"
+          }`}
           aria-hidden="true"
         />
 
@@ -195,7 +193,7 @@ const Navbar = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 w-full h-screen bg-primary-bg/98 z-40 flex items-center justify-center md:hidden"
+            className="fixed inset-0 w-full h-screen bg-[#120F12] z-40 flex items-center justify-center md:hidden"
           >
             {/* Ambient glow — radial gradients instead of blur for Android GPU */}
             <div className="absolute top-[20%] right-[10%] w-64 h-64 bg-[radial-gradient(circle_at_center,_#5D2F3E35_0%,_transparent_70%)] pointer-events-none" />
