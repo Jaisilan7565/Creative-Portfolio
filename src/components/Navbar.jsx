@@ -11,9 +11,23 @@ const Navbar = () => {
   const navLinks = [
     { name: 'WORK', href: '#work' },
     { name: 'ABOUT', href: '#about' },
-    { name: 'PROCESS', href: '#process' },
+    { name: 'PROCESS', href: '#about' },
     { name: 'CONTACT', href: '#contact' },
   ];
+
+  const handleNavClick = (e, href) => {
+    e.preventDefault();
+    setIsOpen(false);
+    const targetId = href.replace('#', '');
+    if (!targetId) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   // Toggle scroll class via DOM — no React re-render during hero scroll
   useEffect(() => {
@@ -103,6 +117,7 @@ const Navbar = () => {
           {/* Logo */}
           <a
             href="#"
+            onClick={(e) => handleNavClick(e, '#')}
             className="font-body tracking-[0.25em] font-semibold text-[13px] md:text-[14px] text-ivory hover:text-rose transition-colors duration-300 relative group"
           >
             POORNIMA
@@ -117,6 +132,7 @@ const Navbar = () => {
                 <a
                   key={link.name}
                   href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
                   className={`font-body text-[11px] tracking-[0.20em] transition-colors duration-300 relative group py-2 ${
                     isActive ? 'text-rose font-semibold' : 'text-warm-beige hover:text-rose'
                   }`}
@@ -136,6 +152,7 @@ const Navbar = () => {
           <div className="hidden md:block">
             <a
               href="#contact"
+              onClick={(e) => handleNavClick(e, '#contact')}
               className="font-body text-[11px] tracking-[0.2em] font-semibold text-rose hover:text-ivory transition-all duration-300 flex items-center gap-2 group py-1.5 px-4 border border-rose/30 hover:border-ivory/50 rounded-full bg-rose/5"
             >
               LET'S TALK
@@ -194,7 +211,7 @@ const Navbar = () => {
                     transition={{ delay: index * 0.1, duration: 0.4 }}
                     key={link.name}
                     href={link.href}
-                    onClick={() => setIsOpen(false)}
+                    onClick={(e) => handleNavClick(e, link.href)}
                     className={`font-body text-[16px] tracking-[0.25em] transition-colors duration-300 ${
                       isActive ? 'text-rose font-semibold' : 'text-warm-beige hover:text-rose'
                     }`}
@@ -212,7 +229,7 @@ const Navbar = () => {
               >
                 <a
                   href="#contact"
-                  onClick={() => setIsOpen(false)}
+                  onClick={(e) => handleNavClick(e, '#contact')}
                   className="font-body text-[12px] tracking-[0.2em] font-semibold text-rose hover:text-ivory transition-all duration-300 inline-flex items-center gap-2 py-2.5 px-6 border border-rose/30 hover:border-ivory/50 rounded-full bg-rose/5"
                 >
                   LET'S TALK

@@ -4,6 +4,7 @@ import Hero from "./sections/Hero";
 import SelectedWork from "./sections/SelectedWork";
 import AboutMe from "./sections/AboutMe";
 import CaseStudy from "./sections/CaseStudy";
+import TestimonialContact from "./sections/TestimonialContact";
 import Loader from "./components/Loader";
 
 const App = () => {
@@ -39,6 +40,7 @@ const App = () => {
         <SelectedWork />
         <AboutMe />
         <CaseStudy />
+        <TestimonialContact />
       </MainLayout>
     </>
   );
