@@ -1,5 +1,5 @@
-import React from 'react';
-import { Mail, Phone, Globe } from 'lucide-react';
+import React from "react";
+import { Mail, Phone, Globe } from "lucide-react";
 
 const InstagramIcon = (props) => (
   <svg
@@ -21,10 +21,10 @@ const Footer = () => {
   const currentYear = 2024; // Sticking to 2024 to match the mockup image exactly
 
   const navLinks = [
-    { name: 'Work', href: '#work' },
-    { name: 'About', href: '#about' },
-    { name: 'Process', href: '#process' },
-    { name: 'Contact', href: '#contact' },
+    { name: "Work", href: "#work" },
+    { name: "About", href: "#about" },
+    { name: "Process", href: "#process" },
+    { name: "Contact", href: "#contact" },
   ];
 
   return (
@@ -32,10 +32,9 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-6 md:px-12 xl:px-24">
         {/* Main Footer Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 pb-12">
-          
           {/* Left Column: Branding */}
           <div className="md:col-span-5 flex flex-col gap-4">
-            <h2 className="font-hero text-[32px] md:text-[38px] tracking-[0.05em] font-normal text-ivory leading-none">
+            <h2 className="font-hero text-4xl sm:text-5xl md:text-6xl font-bold uppercase text-warm-beige/90 tracking-[-0.05em] leading-none transform scale-x-[0.7] scale-y-[1.4] origin-left inline-block my-2">
               POORNIMA
             </h2>
             <div className="flex flex-col gap-1 text-[12px] md:text-[13px] text-warm-beige/70 font-body font-light tracking-[0.05em]">
@@ -73,20 +72,20 @@ const Footer = () => {
               {/* Email */}
               <a
                 href="mailto:poornimanaikwade299@gmail.com"
-                className="flex items-center gap-3 text-[12px] md:text-[13px] text-warm-beige hover:text-rose transition-colors duration-300 group"
+                className="flex items-center gap-3 text-[12px] md:text-[13px] text-warm-beige hover:text-rose transition-colors duration-300 group cursor-pointer relative z-10 w-fit"
               >
-                <Mail className="w-4 h-4 text-warm-beige/50 group-hover:text-rose transition-colors duration-300" />
+                <Mail className="w-4 h-4 text-warm-beige/50 group-hover:text-rose transition-colors duration-300 flex-shrink-0" />
                 <span className="underline decoration-warm-beige/30 group-hover:decoration-rose/50">
                   poornimanaikwade299@gmail.com
                 </span>
               </a>
               {/* Phone */}
               <a
-                href="tel:+918591071878"
-                className="flex items-center gap-3 text-[12px] md:text-[13px] text-warm-beige hover:text-rose transition-colors duration-300 group"
+                href="tel:+918591073838"
+                className="flex items-center gap-3 text-[12px] md:text-[13px] text-warm-beige hover:text-rose transition-colors duration-300 group cursor-pointer relative z-10 w-fit"
               >
-                <Phone className="w-4 h-4 text-warm-beige/50 group-hover:text-rose transition-colors duration-300" />
-                <span>8591071878</span>
+                <Phone className="w-4 h-4 text-warm-beige/50 group-hover:text-rose transition-colors duration-300 flex-shrink-0" />
+                <span>8591073838</span>
               </a>
               {/* Instagram handle */}
               <a
@@ -140,15 +139,16 @@ const Footer = () => {
               </a>
             </div>
           </div>
-
         </div>
 
         {/* Bottom Row */}
-        <div className="border-t border-glass pt-8 mt-4 flex flex-col md:flex-row items-center justify-between gap-4 text-warm-beige/40 text-[11px] font-body tracking-[0.05em]">
+        <div className="border-t border-glass pt-8 mt-2 flex flex-col md:flex-row items-center justify-between gap-4 text-warm-beige/40 text-[11px] font-body tracking-[0.05em]">
           <p>© {currentYear} Poornima. All Rights Reserved.</p>
           <div className="flex items-center gap-1">
             <span>Designed & Developed with</span>
-            <span className="text-rose text-[12px]" aria-label="love">♥</span>
+            <span className="text-rose text-[12px]" aria-label="love">
+              ♥
+            </span>
           </div>
         </div>
       </div>

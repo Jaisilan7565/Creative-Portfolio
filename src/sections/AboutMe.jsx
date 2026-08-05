@@ -200,78 +200,14 @@ const AboutMe = () => {
             ))}
           </div>
 
-          {/* Elegant Botanical Floral Vector Illustration on Right Side */}
-          <div className="absolute right-[-20px] sm:right-0 bottom-0 top-12 w-40 sm:w-52 pointer-events-none opacity-40 sm:opacity-50 select-none z-0 flex items-center justify-end">
-            <svg
-              viewBox="0 0 200 400"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-full h-full object-contain"
-            >
-              {/* Stem */}
-              <path
-                d="M170 390 C 150 280, 110 180, 140 20"
-                stroke="#5D2F3E"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-              />
-              {/* Secondary Branch */}
-              <path
-                d="M145 220 C 110 170, 80 130, 90 80"
-                stroke="#40222B"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-              />
-
-              {/* Leaves */}
-              <path
-                d="M140 20 C 110 10, 85 30, 115 50 C 130 40, 140 30, 140 20 Z"
-                fill="#5D2F3E"
-                opacity="0.85"
-              />
-              <path
-                d="M135 70 C 95 60, 75 90, 110 105 C 125 90, 135 80, 135 70 Z"
-                fill="#40222B"
-                opacity="0.9"
-              />
-              <path
-                d="M150 120 C 180 90, 200 120, 165 140 C 155 130, 150 125, 150 120 Z"
-                fill="#5D2F3E"
-                opacity="0.8"
-              />
-              <path
-                d="M130 180 C 85 160, 70 200, 105 215 C 120 200, 130 190, 130 180 Z"
-                fill="#391F28"
-                opacity="0.9"
-              />
-              <path
-                d="M142 240 C 180 220, 195 260, 155 275 C 145 260, 142 250, 142 240 Z"
-                fill="#5D2F3E"
-                opacity="0.85"
-              />
-              <path
-                d="M152 300 C 110 280, 90 320, 130 335 C 145 320, 152 310, 152 300 Z"
-                fill="#40222B"
-                opacity="0.9"
-              />
-
-              {/* Rose Petals & Flower Blossoms */}
-              <path
-                d="M90 80 C 70 60, 50 80, 65 100 C 80 110, 95 95, 90 80 Z"
-                fill="#D49C9C"
-                opacity="0.75"
-              />
-              <path
-                d="M100 85 C 85 70, 70 95, 85 110 C 100 115, 110 100, 100 85 Z"
-                fill="#5D2F3E"
-                opacity="0.8"
-              />
-              <path
-                d="M165 140 C 185 125, 195 150, 175 165 C 160 170, 155 150, 165 140 Z"
-                fill="#D49C9C"
-                opacity="0.65"
-              />
-            </svg>
+          {/* Botanical Background Image Overlay */}
+          <div className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden">
+            <img
+              src="/process-bg.png"
+              alt="Botanical floral process background"
+              className="w-full h-full object-cover object-right block opacity-85 group-hover/process:opacity-100 transition-opacity duration-500"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-secondary-bg via-secondary-bg/70 to-transparent pointer-events-none" />
           </div>
         </motion.div>
       </div>

@@ -182,62 +182,13 @@ const TestimonialContact = () => {
             </div>
 
             {/* Dark Botanical Still Life Floral Vase Background Overlay */}
-            <div className="absolute right-0 bottom-0 w-48 sm:w-56 md:w-64 h-72 pointer-events-none opacity-25 group-hover/cta:opacity-35 transition-opacity duration-500 z-0">
-              <svg
-                viewBox="0 0 200 300"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-full h-full object-contain object-bottom-right"
-              >
-                {/* Vase */}
-                <path
-                  d="M130 290 C 120 230, 110 210, 140 180 C 150 170, 150 160, 140 155 L 120 155 C 110 160, 110 170, 120 180 C 150 210, 140 230, 130 290 Z"
-                  fill="#171315"
-                  stroke="#5D2F3E"
-                  strokeWidth="2"
-                />
-                {/* Flower Stems */}
-                <path
-                  d="M130 155 Q 110 90 90 40 M 130 155 Q 140 80 160 30 M 130 155 Q 150 110 175 75"
-                  stroke="#D49C9C"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                />
-                {/* Flower Blossoms */}
-                <circle
-                  cx="90"
-                  cy="40"
-                  r="16"
-                  fill="#5D2F3E"
-                  stroke="#D49C9C"
-                  strokeWidth="1.5"
-                />
-                <circle
-                  cx="160"
-                  cy="30"
-                  r="18"
-                  fill="#40222B"
-                  stroke="#D49C9C"
-                  strokeWidth="1.5"
-                />
-                <circle
-                  cx="175"
-                  cy="75"
-                  r="14"
-                  fill="#5D2F3E"
-                  stroke="#D49C9C"
-                  strokeWidth="1.5"
-                />
-                {/* Spherical Accent Object */}
-                <circle
-                  cx="70"
-                  cy="260"
-                  r="24"
-                  fill="#40222B"
-                  stroke="#D49C9C"
-                  strokeWidth="1.5"
-                />
-              </svg>
+            <div className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden">
+              <img
+                src="/talk-bg.png"
+                alt="Dark botanical still life background"
+                className="w-full h-full object-cover object-right block opacity-90 group-hover/cta:opacity-100 transition-opacity duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-secondary-bg via-secondary-bg/70 to-transparent pointer-events-none" />
             </div>
           </div>
         </motion.div>
