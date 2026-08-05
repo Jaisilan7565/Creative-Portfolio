@@ -46,7 +46,7 @@ const SelectedWork = () => {
   return (
     <section
       id="work"
-      className="relative w-full py-20 md:py-28 px-6 md:px-12 xl:px-24 bg-primary-bg overflow-hidden isolate"
+      className="relative w-full pt-20 md:pt-24 pb-8 md:pb-12 px-6 md:px-12 xl:px-24 bg-primary-bg overflow-hidden isolate"
     >
       {/* Background Glow Accents (GPU Radial Gradients for zero blur lag) */}
       <div className="absolute top-1/3 -left-[15%] w-[550px] h-[550px] bg-[radial-gradient(circle_at_center,_#5D2F3E25_0%,_transparent_70%)] pointer-events-none" />

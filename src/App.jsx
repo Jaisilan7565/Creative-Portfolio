@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import MainLayout from "./layouts/MainLayout";
 import Hero from "./sections/Hero";
 import SelectedWork from "./sections/SelectedWork";
+import AboutMe from "./sections/AboutMe";
 import Loader from "./components/Loader";
 
 const App = () => {
@@ -35,6 +36,7 @@ const App = () => {
       <MainLayout>
         <Hero />
         <SelectedWork />
+        <AboutMe />
       </MainLayout>
     </>
   );
